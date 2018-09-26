@@ -17,6 +17,7 @@
     "email-addresses": "^3.0.1",
     "express": "^4.15.2",
     "https-proxy-agent": "^2.2.1",
+    "ioredis": "^4.0.0",
     "jfs": "^0.3.0",
     "localtunnel": "^1.8.2",
     "md5": "^2.2.1",
