@@ -1,8 +1,96 @@
 # Change Log
 
-[View the official Botkit roadmap](https://github.com/howdyai/botkit/projects/7) for upcoming changes and features.
+[View the official Botkit roadmap](https://github.com/howdyai/botkit/projects/9) for upcoming changes and features.
 
 [Want to contribute? Read our guide!](https://github.com/howdyai/botkit/blob/master/CONTRIBUTING.md)
+
+
+# Next Release (in master on Github)
+
+* Slack: [set useQuerystring to true in Slack API](https://github.com/howdyai/botkit/pull/1547)
+* Slack: [Change 500 webserver status to 404 when team not found](https://github.com/howdyai/botkit/pull/1548)
+* Google Hangouts: [allow to consume auth data from env var instead of file](https://github.com/howdyai/botkit/pull/1543)
+* Pull requests will now trigger Travis builds
+
+# 0.7.0
+
+This release is the first major step towards [deprecating Botkit Studio](https://github.com/howdyai/botkit/issues/1534),
+and introducing a more general system for scripted dialogs and content from [Botkit CMS](https://github.com/howdyai/botkit-cms).
+
+We urge all Botkit users to update to the most recent version of Botkit. This may require an update to your project's package.json file.
+
+* Remove all functionality pertaining to Botkit Studio statistics and analytics APIs. All stats related services provided by Botkit Studio will cease operation on Dec 15.
+* Remove `stats_optout` flag from configuration.
+* Remove Botkit Studio options from command line interface.
+* Calls to Botkit Studio and/or Botkit CMS will no longer include the user's id
+
+New features and changes:
+
+* Support for Facebook Personas API. [Full docs here](https://botkit.ai/docs/readme-facebook.html#personas-api) -- [Thanks to @ouadie-lahdioui](https://github.com/howdyai/botkit/pull/1497)!
+* Many Facebook APIs [have been promisified](https://github.com/howdyai/botkit/pull/1520) by @htaidirt
+* Improved technique used to verify incoming webhooks from Slack [use hmac compare instead of direct compare](https://github.com/howdyai/botkit/pull/1539) - Thanks, @danhofer!
+# 0.6.21
+
+* Add support for Slack's chat.getPermalink
+
+# 0.6.20
+
+* Fix bug introduced in 0.6.19 that caused events to improperly fire twice.
+* Emit a warning if Slack webhook validation is not enabled.
+* To prepare for upcoming changes to Botkit Studio and Botkit stats collection:
+    * Prevent bots without Botkit Studio credentials from sending stat events
+    * Emit a message about stats data collection at startup
+
+# 0.6.19
+
+No new features, but updates throughout the dependency tree for security and stability purposes.
+
+* Updated dependency versions to latest available
+
+* Rewrote Botkit command line tool to remove dependency on abandoned library. Upgrade to the latest: `npm install -g botkit`
+
+* Switched from using jscs to eslint for linting purposes.
+
+# 0.6.18
+
+* Fix syntax error in Web connector. Oops! Thanks for reporting this issue @iworkforthem!
+
+* Add support for Google Hangouts "card_clicked" event. [Thanks to @ouadie-lahdioui](https://github.com/howdyai/botkit/pull/1487)
+
+# 0.6.17
+
+In addition to minor fixes, dependency version updates, and documentation updates, this version includes:
+
+* Google Hangouts support is here! Thanks to [@ouadie-lahdioui's hard work](https://github.com/howdyai/botkit/pull/1414), your bot can now operate in [Hangouts Chat](https://gsuite.google.com/products/chat/).
+
+    Get started with the [Botkit Starter Kit for Google Hangouts](https://github.com/howdyai/botkit-starter-googlehangouts).
+
+    [Botkit docs for Google Hangouts connector](https://botkit.ai/docs/readme-google-hangouts.html)
+
+* CiscoSpark bots are now officially WebexBots. Everything is backwards compatible thanks to the hard work of [@ObjectIsAdvantag](https://github.com/howdyai/botkit/pull/1349), but you should move to using `Botkit.webexbot()` instead of `Botkit.sparkbot()` ASAP.
+
+    [Botkit docs for Cisco Webex Teams](https://botkit.ai/docs/readme-webex.html)
+
+    [Read more about these changes](https://botkit.ai/docs/readme-webex.html#webex-rebrand).
+
+* Tests have been reorganized and updated thanks to [@fastbean-au](https://github.com/howdyai/botkit/pull/1468).
+
+* Errors that occur in the middleware pipeline will now cause `pipeline_error` event to be emitted. In addition, errors at specific stages of the pipeline will also emit their own events: `ingest_error`, `normalize_error`, `categorize_error` and `receive_error`. This should make it easier to debug problems in middleware. Thanks to [@Nop0x](https://github.com/howdyai/botkit/pull/1425).  [Docs](https://botkit.ai/docs/core.html#middleware-error-events)
+
+    Handle a pipeline error:
+    ```javascript
+    controller.on('pipeline_error', function(err, bot, message, stage_name) {
+        // ... handle it!
+    });
+    ```
+
+    Handle a specific stage error:
+    ```javascript
+    controller.on('ingest_error', function(err, bot, message) {
+        // ... handle it!
+    });
+    ```
+
 
 # 0.6.16
 
