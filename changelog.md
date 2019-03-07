@@ -4,13 +4,29 @@
 
 [Want to contribute? Read our guide!](https://github.com/howdyai/botkit/blob/master/CONTRIBUTING.md)
 
+# 0.7.4
 
-# Next Release (in master on Github)
+* only require simple_storage when used: [#1566](https://github.com/howdyai/botkit/pull/1566)
+* Slack: [Extend support of blocks](https://github.com/howdyai/botkit/pull/1597) - Thanks to [@ihorrusinko](https://github.com/ihorrusinko)
+* Slack: [Add new block_actions events](https://github.com/howdyai/botkit/pull/1596) - Thanks to [@makstaks](https://github.com/makstaks)
+* [Updated docs for using blocks with Slack](https://botkit.ai/docs/readme-slack.html#interactive-messages) - Thanks to [@makstaks](https://github.com/makstaks)
 
+# 0.7.3
+
+* Slack: Messages can now contain a `blocks` field to support Slack's new [Block Kit feature](https://api.slack.com/reference/messaging/blocks). Thanks to [@ihorrusinko for this update](https://github.com/howdyai/botkit/pull/1594).
 * Slack: [set useQuerystring to true in Slack API](https://github.com/howdyai/botkit/pull/1547)
 * Slack: [Change 500 webserver status to 404 when team not found](https://github.com/howdyai/botkit/pull/1548)
 * Google Hangouts: [allow to consume auth data from env var instead of file](https://github.com/howdyai/botkit/pull/1543)
 * Pull requests will now trigger Travis builds
+
+
+# 0.7.2
+
+Update dependency on `request` to latest to fix security warnings in dependency tree.
+
+# 0.7.1
+
+Update dependency on `botbuilder` to `3.16` to fix security warnings in dependency tree.
 
 # 0.7.0
 
